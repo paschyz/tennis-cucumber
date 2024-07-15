@@ -30,7 +30,8 @@ public class Player {
                 case(5):return "Win !";
                 default:throw new IllegalArgumentException("Invalid score: " + scoreIndex);
             }
-        }
+        }else{
+
         switch (scoreIndex){
             case(0):return "love";
             case(1):return "15";
@@ -38,6 +39,7 @@ public class Player {
             case(3):return "40";
             case(4):return "Win !";
             default:throw new IllegalArgumentException("Invalid score: " + scoreIndex);
+        }
         }
     }
     public void winPoint(){
