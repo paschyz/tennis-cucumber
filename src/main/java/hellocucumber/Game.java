@@ -5,16 +5,23 @@ import java.util.Random;
 public class Game {
     private Player playerOne;
     private Player playerTwo;
-    static final Integer MAX_POINTS =40;
 
     private boolean isDeuce = false;
     private boolean isAdvantage = false;
-
 
     public Game(Player playerOne, Player playerTwo){
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
     }
+
+    public boolean isDeuce() {
+        return isDeuce;
+    }
+
+    public boolean isAdvantage() {
+        return isAdvantage;
+    }
+
     public void randomPlayerWinsPoint(){
         givePoint(selectRandomWinner());
     }
@@ -57,29 +64,30 @@ public class Game {
         }
         return null;
     }
+
     public void checkDeuce(){
         if (playerOne.getScoreIndex()>= 3 && playerTwo.getScoreIndex() >= 3 ){
-            if (playerOne.getScoreIndex()==playerTwo.getScoreIndex() ){
                 isDeuce=true;
-            }
         }
     }
 
     public void checkAdvantage(){
-        if (playerOne.getScoreIndex()>= 3 && playerTwo.getScoreIndex() >= 3 ){
             if (playerOne.getScoreIndex()>=playerTwo.getScoreIndex()+1 || playerTwo.getScoreIndex()>=playerOne.getScoreIndex()+1 ){
                 isAdvantage=true;
             }
             checkResetAdvantage();
-        }
     }
 
     public void checkResetAdvantage(){
         if (playerOne.getScoreIndex() == playerTwo.getScoreIndex()){
-            isAdvantage=false;
-            playerOne.setScoreIndex(3);
-            playerTwo.setScoreIndex(3);
+            resetPoints();
         }
+    }
+
+    public void resetPoints(){
+        isAdvantage=false;
+        playerOne.setScoreIndex(3);
+        playerTwo.setScoreIndex(3);
     }
 
 
@@ -87,10 +95,13 @@ public class Game {
         Integer roundCount = 1;
         while(true){
             randomPlayerWinsPoint();
-            checkDeuce();
-            checkAdvantage();
-            String winnerName= checkWinner();
+            if(!isDeuce){
+                checkDeuce();
+            }else{
+                checkAdvantage();
+            }
             displayScores(roundCount);
+            String winnerName= checkWinner();
             if(winnerName != null){
                 System.out.println("\n" + winnerName+ " wins !");
                 return;

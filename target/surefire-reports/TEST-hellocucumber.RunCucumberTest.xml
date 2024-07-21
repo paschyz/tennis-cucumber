@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="hellocucumber.RunCucumberTest" time="0.14" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="hellocucumber.RunCucumberTest" time="0.255" tests="6" errors="2" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\k\AppData\Local\Temp\surefire3168424812757646326\surefirebooter-20240715220712035_3.jar C:\Users\k\AppData\Local\Temp\surefire3168424812757646326 2024-07-15T22-07-11_740-jvmRun1 surefire-20240715220712035_1tmp surefire_0-20240715220712035_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\k\AppData\Local\Temp\surefire15771500625168150283\surefirebooter-20240716004356951_3.jar C:\Users\k\AppData\Local\Temp\surefire15771500625168150283 2024-07-16T00-43-56_632-jvmRun1 surefire-20240716004356951_1tmp surefire_0-20240716004356951_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\k\dev\java\cucumber\hellocucumber\target\test-classes;C:\Users\k\dev\java\cucumber\hellocucumber\target\classes;C:\Users\k\.m2\repository\io\cucumber\cucumber-java\7.18.0\cucumber-java-7.18.0.jar;C:\Users\k\.m2\repository\io\cucumber\cucumber-core\7.18.0\cucumber-core-7.18.0.jar;C:\Users\k\.m2\repository\io\cucumber\cucumber-gherkin\7.18.0\cucumber-gherkin-7.18.0.jar;C:\Users\k\.m2\repository\io\cucumber\cucumber-gherkin-messages\7.18.0\cucumber-gherkin-messages-7.18.0.jar;C:\Users\k\.m2\repository\io\cucumber\gherkin\28.0.0\gherkin-28.0.0.jar;C:\Users\k\.m2\repository\io\cucumber\messages\24.1.0\messages-24.1.0.jar;C:\Users\k\.m2\repository\io\cucumber\testng-xml-formatter\0.1.0\testng-xml-formatter-0.1.0.jar;C:\Users\k\.m2\repository\io\cucumber\query\12.1.2\query-12.1.2.jar;C:\Users\k\.m2\repository\io\cucumber\tag-expressions\6.1.0\tag-expressions-6.1.0.jar;C:\Users\k\.m2\repository\io\cucumber\cucumber-expressions\17.1.0\cucumber-expressions-17.1.0.jar;C:\Users\k\.m2\repository\io\cucumber\datatable\7.18.0\datatable-7.18.0.jar;C:\Users\k\.m2\repository\io\cucumber\cucumber-plugin\7.18.0\cucumber-plugin-7.18.0.jar;C:\Users\k\.m2\repository\io\cucumber\docstring\7.18.0\docstring-7.18.0.jar;C:\Users\k\.m2\repository\io\cucumber\html-formatter\21.3.1\html-formatter-21.3.1.jar;C:\Users\k\.m2\repository\io\cucumber\junit-xml-formatter\0.4.0\junit-xml-formatter-0.4.0.jar;C:\Users\k\.m2\repository\io\cucumber\ci-environment\10.0.1\ci-environment-10.0.1.jar;C:\Users\k\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\k\.m2\repository\io\cucumber\cucumber-junit-platform-engine\7.18.0\cucumber-junit-platform-engine-7.18.0.jar;C:\Users\k\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\k\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\k\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\k\.m2\repository\org\junit\platform\junit-platform-suite\1.10.2\junit-platform-suite-1.10.2.jar;C:\Users\k\.m2\repository\org\junit\platform\junit-platform-suite-api\1.10.2\junit-platform-suite-api-1.10.2.jar;C:\Users\k\.m2\repository\org\junit\platform\junit-platform-suite-engine\1.10.2\junit-platform-suite-engine-1.10.2.jar;C:\Users\k\.m2\repository\org\junit\platform\junit-platform-suite-commons\1.10.2\junit-platform-suite-commons-1.10.2.jar;C:\Users\k\.m2\repository\org\junit\platform\junit-platform-launcher\1.10.2\junit-platform-launcher-1.10.2.jar;C:\Users\k\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\k\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\k\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\k\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\k\AppData\Local\Temp\surefire3168424812757646326\surefirebooter-20240715220712035_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\k\AppData\Local\Temp\surefire15771500625168150283\surefirebooter-20240716004356951_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.10+11-LTS-240"/>
@@ -56,7 +56,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="Example #1.1" classname="Examples" time="0.048">
+  <testcase name="Example #1.1" classname="Examples" time="0.06">
     <system-out><![CDATA[
 Scenario Outline: Today is or is not Friday &amp#27;[90m# hellocucumber/is_it_friday_yet.feature:11&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mtoday is &amp#27;[0m&amp#27;[32m&amp#27;[1m"Friday"&amp#27;[0m                   &amp#27;[90m# hellocucumber.StepDefinitions.today_is(java.lang.String)&amp#27;[0m
@@ -72,12 +72,106 @@ Scenario Outline: Today is or is not Friday &amp#27;[90m# hellocucumber/is_it_fr
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should be told &amp#27;[0m&amp#27;[32m&amp#27;[1m"Nope"&amp#27;[0m              &amp#27;[90m# hellocucumber.StepDefinitions.i_should_be_told(java.lang.String)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="0.002">
+  <testcase name="Example #1.3" classname="Examples" time="0.003">
     <system-out><![CDATA[
 Scenario Outline: Today is or is not Friday &amp#27;[90m# hellocucumber/is_it_friday_yet.feature:13&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mtoday is &amp#27;[0m&amp#27;[32m&amp#27;[1m"anything else!"&amp#27;[0m           &amp#27;[90m# hellocucumber.StepDefinitions.today_is(java.lang.String)&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI ask whether it's Friday yet&amp#27;[0m        &amp#27;[90m# hellocucumber.StepDefinitions.i_ask_whether_it_s_Friday_yet()&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should be told &amp#27;[0m&amp#27;[32m&amp#27;[1m"Nope"&amp#27;[0m              &amp#27;[90m# hellocucumber.StepDefinitions.i_should_be_told(java.lang.String)&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Deuce scenario" classname="Tennis Game" time="0.015">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at hellocucumber.TennisGameSteps.the_game_should_be_in_deuce(TennisGameSteps.java:39)
+	at ✽.the game should be in deuce(classpath:hellocucumber/tennis.feature:6)
+]]></failure>
+    <system-out><![CDATA[
+Scenario: Deuce scenario               &amp#27;[90m# hellocucumber/tennis.feature:3&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mboth players have a score of &amp#27;[0m&amp#27;[32m&amp#27;[1m3&amp#27;[0m &amp#27;[90m# hellocucumber.TennisGameSteps.both_players_have_a_score_of(java.lang.Integer)&amp#27;[0m
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mone player scores a point&amp#27;[0m       &amp#27;[90m# hellocucumber.TennisGameSteps.one_player_scores_a_point()&amp#27;[0m
+  &amp#27;[31mThen &amp#27;[0m&amp#27;[31mthe game should be in deuce&amp#27;[0m     &amp#27;[90m# hellocucumber.TennisGameSteps.the_game_should_be_in_deuce()&amp#27;[0m
+      &amp#27;[31morg.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at hellocucumber.TennisGameSteps.the_game_should_be_in_deuce(TennisGameSteps.java:39)
+	at âœ½.the game should be in deuce(classpath:hellocucumber/tennis.feature:6)
+&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Advantage scenario" classname="Tennis Game" time="0.052">
+    <error message="The step &apos;the other player has a score of 3&apos; and 1 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;the other player has a score of {int}&quot;)&#10;public void the_other_player_has_a_score_of(Integer int1) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the leading player scores a point&quot;)&#10;public void the_leading_player_scores_a_point() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.platform.engine.UndefinedStepException"><![CDATA[io.cucumber.junit.platform.engine.UndefinedStepException: 
+The step 'the other player has a score of 3' and 1 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the other player has a score of {int}")
+public void the_other_player_has_a_score_of(Integer int1) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the leading player scores a point")
+public void the_leading_player_scores_a_point() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at io.cucumber.core.runtime.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:69)
+	at io.cucumber.junit.platform.engine.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:22)
+	at io.cucumber.junit.platform.engine.CucumberEngineExecutionContext.lambda$runTestCase$4(CucumberEngineExecutionContext.java:114)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:136)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:136)
+	at io.cucumber.junit.platform.engine.CucumberEngineExecutionContext.runTestCase(CucumberEngineExecutionContext.java:109)
+	at io.cucumber.junit.platform.engine.NodeDescriptor$PickleDescriptor.execute(NodeDescriptor.java:168)
+	at io.cucumber.junit.platform.engine.NodeDescriptor$PickleDescriptor.execute(NodeDescriptor.java:90)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+    <system-out><![CDATA[
+Scenario: Advantage scenario                                  &amp#27;[90m# hellocucumber/tennis.feature:8&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mone player has a score of &amp#27;[0m&amp#27;[32m&amp#27;[1m4&amp#27;[0m                           &amp#27;[90m# hellocucumber.TennisGameSteps.one_player_has_a_score_of(java.lang.Integer)&amp#27;[0m
+  &amp#27;[33mAnd &amp#27;[0m&amp#27;[33mthe other player has a score of 3&amp#27;[0m
+  &amp#27;[36mWhen &amp#27;[0m&amp#27;[36mthe leading player scores a point&amp#27;[0m
+  &amp#27;[36mThen &amp#27;[0m&amp#27;[36mthe game should be in advantage for the leading player&amp#27;[0m &amp#27;[90m# hellocucumber.TennisGameSteps.the_game_should_be_in_advantage_for_the_leading_player()&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Player wins scenario" classname="Tennis Game" time="0.009">
+    <error message="The step &apos;the other player has a score less than 3&apos; and 1 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;the other player has a score less than {int}&quot;)&#10;public void the_other_player_has_a_score_less_than(Integer int1) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the leading player scores a point&quot;)&#10;public void the_leading_player_scores_a_point() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.platform.engine.UndefinedStepException"><![CDATA[io.cucumber.junit.platform.engine.UndefinedStepException: 
+The step 'the other player has a score less than 3' and 1 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the other player has a score less than {int}")
+public void the_other_player_has_a_score_less_than(Integer int1) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the leading player scores a point")
+public void the_leading_player_scores_a_point() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at io.cucumber.core.runtime.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:69)
+	at io.cucumber.junit.platform.engine.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:22)
+	at io.cucumber.junit.platform.engine.CucumberEngineExecutionContext.lambda$runTestCase$4(CucumberEngineExecutionContext.java:114)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:136)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:136)
+	at io.cucumber.junit.platform.engine.CucumberEngineExecutionContext.runTestCase(CucumberEngineExecutionContext.java:109)
+	at io.cucumber.junit.platform.engine.NodeDescriptor$PickleDescriptor.execute(NodeDescriptor.java:168)
+	at io.cucumber.junit.platform.engine.NodeDescriptor$PickleDescriptor.execute(NodeDescriptor.java:90)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+    <system-out><![CDATA[
+Scenario: Player wins scenario                 &amp#27;[90m# hellocucumber/tennis.feature:14&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mone player has a score of &amp#27;[0m&amp#27;[32m&amp#27;[1m4&amp#27;[0m            &amp#27;[90m# hellocucumber.TennisGameSteps.one_player_has_a_score_of(java.lang.Integer)&amp#27;[0m
+  &amp#27;[33mAnd &amp#27;[0m&amp#27;[33mthe other player has a score less than 3&amp#27;[0m
+  &amp#27;[36mWhen &amp#27;[0m&amp#27;[36mthe leading player scores a point&amp#27;[0m
+  &amp#27;[36mThen &amp#27;[0m&amp#27;[36mthe leading player should win the game&amp#27;[0m  &amp#27;[90m# hellocucumber.TennisGameSteps.the_leading_player_should_win_the_game()&amp#27;[0m
 ]]></system-out>
   </testcase>
 </testsuite>
