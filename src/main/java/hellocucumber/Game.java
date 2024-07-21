@@ -90,7 +90,9 @@ public class Game {
         playerTwo.setScoreIndex(3);
     }
 
-
+    public String getScore() {
+            return playerOne.getScore(isDeuce()) + " - " + playerTwo.getScore(isDeuce());
+    }
     public void play(){
         Integer roundCount = 1;
         while(true){
@@ -100,8 +102,8 @@ public class Game {
             }else{
                 checkAdvantage();
             }
-            displayScores(roundCount);
             String winnerName= checkWinner();
+            System.out.println(getScore());
             if(winnerName != null){
                 System.out.println("\n" + winnerName+ " wins !");
                 return;

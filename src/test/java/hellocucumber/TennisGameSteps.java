@@ -12,58 +12,70 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TennisGameSteps {
 
-    private Player playerOne;
-    private Player playerTwo;
+    private Player playerA;
+    private Player playerB;
     private Game game;
+    private String currentScore;
 
 
     @Before
     public void setUp() {
-        playerOne = null;
-        playerTwo = null;
+        playerA = null;
+        playerB = null;
         game = null;
+        currentScore = "";
+
     }
     @Given("both players have a score of {int}")
     public void both_players_have_a_score_of(Integer score) {
-        playerOne = new Player("Player One");
-        playerTwo = new Player("Player Two");
-        playerOne.setScoreIndex(score);
-        playerTwo.setScoreIndex(score);
-        game = new Game(playerOne, playerTwo);
+        playerA = new Player("Player One");
+        playerB = new Player("Player Two");
+        playerA.setScoreIndex(score);
+        playerB.setScoreIndex(score);
+        game = new Game(playerA, playerB);
     }
 
     @Given("one player has a score of {int}")
     public void one_player_has_a_score_of(Integer score) {
-        if (playerOne == null) {
-            playerOne = new Player("Player One");
+        if (playerA == null) {
+            playerA = new Player("Player One");
         }
-        playerOne.setScoreIndex(score);
-        if (playerTwo != null) {
-            game = new Game(playerOne, playerTwo);
+        playerA.setScoreIndex(score);
+        if (playerB != null) {
+            game = new Game(playerA, playerB);
         }
     }
 
+
+    @Given("Player A has won {int} point\\(s) and Player B has won {int} point\\(s)")
+    public void player_a_has_won_point_and_player_b_has_won_points(int pointsA, int pointsB) {
+        playerA = new Player("Player A");
+        playerB = new Player("Player B");
+        playerA.setScoreIndex(pointsA);
+        playerB.setScoreIndex(pointsB);
+        game = new Game(playerA, playerB);
+    }
     @And("the other player has a score of {int}")
     public void the_other_player_has_a_score_of(Integer score) {
-        if (playerTwo == null) {
-            playerTwo = new Player("Player Two");
+        if (playerB == null) {
+            playerB = new Player("Player Two");
         }
-        playerTwo.setScoreIndex(score);
-        if (playerOne != null) {
-            game = new Game(playerOne, playerTwo);
+        playerB.setScoreIndex(score);
+        if (playerA != null) {
+            game = new Game(playerA, playerB);
         }
     }
 
     @And("the other player has a score less than {int}")
     public void the_other_player_has_a_score_less_than(Integer score) {
-        if (playerTwo == null) {
-            playerTwo = new Player("Player Two");
+        if (playerB == null) {
+            playerB = new Player("Player Two");
         }
         Random random = new Random();
         int randomScoreIndex = random.nextInt(score);
-        playerTwo.setScoreIndex(randomScoreIndex);
-        if (playerOne != null) {
-            game = new Game(playerOne, playerTwo);
+        playerB.setScoreIndex(randomScoreIndex);
+        if (playerA != null) {
+            game = new Game(playerA, playerB);
         }
     }
     @When("one player scores a point")
@@ -82,13 +94,34 @@ public class TennisGameSteps {
     }
     @When("the leading player scores a point")
     public void the_leading_player_scores_a_point() {
-        if(playerOne.getScoreIndex() > playerTwo.getScoreIndex()){
-            playerOne.winPoint();
+        if(playerA.getScoreIndex() > playerB.getScoreIndex()){
+            playerA.winPoint();
         }else {
-            playerTwo.winPoint();
+            playerB.winPoint();
         }
     }
 
+    @When("{string} scores a point")
+    public void player_scores_a_point(String playerName) {
+        switch (playerName) {
+            case ("Player A"):
+                playerA.winPoint();
+                break;
+            case ("Player B"):
+                playerB.winPoint();
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown player name: " + playerName);
+        }
+    }
+    @When("the score is requested")
+    public void the_score_is_requested() {
+        currentScore=game.getScore();
+    }
+    @Then("the score should be {string}")
+    public void the_score_should_be(String expectedScore) {
+        assertEquals(expectedScore, currentScore);
+    }
 
     @Then("the game should be in deuce")
     public void the_game_should_be_in_deuce() {
@@ -107,8 +140,30 @@ public class TennisGameSteps {
     }
 
 
-    //for comeback to deuce scenario
-    @When("the player with the lower score scores two points")
+
+    @Then("{string} should win the game")
+    public void player_should_win_the_game(String playerName) {
+        String winner = game.checkWinner();
+        assertEquals(playerName, winner);
+    }
+    @Then("{string} should be in advantage")
+    public void player_should_be_in_advantage(String playerName) {
+        Player player;
+        switch (playerName) {
+            case ("Player A"):
+                player = playerA;
+                break;
+            case ("Player B"):
+                player = playerB;
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown player name: " + playerName);
+        }
+        assertEquals("Advantage", player.getScore(true));
+    }
+  
+  
+      @When("the player with the lower score scores two points")
     public void the_player_with_the_lower_score_scores_two_points() {
         if(playerOne.getScoreIndex() > playerTwo.getScoreIndex()){
             playerTwo.winPoint();
@@ -134,7 +189,6 @@ public class TennisGameSteps {
             playerOne.winPoint();
         }
     }
-
 
 
 
