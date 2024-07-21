@@ -107,4 +107,35 @@ public class TennisGameSteps {
     }
 
 
+    //for comeback to deuce scenario
+    @When("the player with the lower score scores two points")
+    public void the_player_with_the_lower_score_scores_two_points() {
+        if(playerOne.getScoreIndex() > playerTwo.getScoreIndex()){
+            playerTwo.winPoint();
+            playerTwo.winPoint();
+        }else {
+            playerOne.winPoint();
+            playerOne.winPoint();
+        }
+    }
+
+
+    //Long deuce scenario
+
+    @When("the player with the lower score scores three points")
+    public void the_player_with_the_lower_score_scores_three_points() {
+        if(playerOne.getScoreIndex() > playerTwo.getScoreIndex()){
+            playerTwo.winPoint();
+            playerTwo.winPoint();
+            playerTwo.winPoint();
+        }else {
+            playerOne.winPoint();
+            playerOne.winPoint();
+            playerOne.winPoint();
+        }
+    }
+
+
+
+
 }
