@@ -82,6 +82,24 @@ public class GameSteps {
         assertFalse(game.isDeuce());
     }
 
+    @Then("the game {string} be in advantage")
+    public void the_game_should_be_in_advantage(String status) {
+        if (status.equals("should")) {
+            assertTrue(game.isAdvantage());
+        } else {
+            assertFalse(game.isAdvantage());
+        }
+    }
+    @Then("the game should be in advantage")
+    public void the_game_should_be_in_advantage() {
+        assertTrue(game.isAdvantage());
+    }
+
+    @Then("the game should not be in advantage")
+    public void the_game_should_not_be_in_advantage() {
+        assertFalse(game.isAdvantage());
+    }
+
     @Then("the game should be in endgame")
     public void the_game_should_be_in_endgame() {
         assertTrue(game.isEndgame());
@@ -97,16 +115,6 @@ public class GameSteps {
         String winner = game.checkWinner();
         assertEquals(playerName, winner);
     }
-
-    @Then("the game {string} be in advantage")
-    public void the_game_should_be_in_advantage(String status) {
-        if (status.equals("should")) {
-            assertTrue(game.isDeuce());
-        } else {
-            assertFalse(game.isDeuce());
-        }
-    }
-
     @Then("{string} should be in advantage")
     public void player_should_be_in_advantage(String playerName) {
         Player player = getPlayerByName(playerName);

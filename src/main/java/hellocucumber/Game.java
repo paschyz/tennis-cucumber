@@ -95,11 +95,7 @@ public class Game {
         // Check if either player has an advantage
         if (scoreOne >= 4 && scoreOne >= scoreTwo + 1) {
             isAdvantage = true;
-        } else if (scoreTwo >= 4 && scoreTwo >= scoreOne + 1) {
-            isAdvantage = true;
-        } else {
-            isAdvantage = false;
-        }
+        } else isAdvantage = scoreTwo >= 4 && scoreTwo >= scoreOne + 1;
     }
 
     public void checkResetAdvantage() {
