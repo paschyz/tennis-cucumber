@@ -3,7 +3,6 @@ package hellocucumber.steps;
 import hellocucumber.Game;
 import hellocucumber.Player;
 import io.cucumber.java.Before;
-import io.cucumber.java.BeforeStep;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -65,6 +64,14 @@ public class GameSteps {
         assertEquals(expectedScore, currentScore);
     }
 
+    @Then("the game {string} be in deuce")
+    public void the_game_should_be_in_deuce(String status) {
+        if (status.equals("should")) {
+            assertTrue(game.isDeuce());
+        } else {
+            assertFalse(game.isDeuce());
+        }
+    }
     @Then("the game should be in deuce")
     public void the_game_should_be_in_deuce() {
         assertTrue(game.isDeuce());
@@ -90,6 +97,16 @@ public class GameSteps {
         String winner = game.checkWinner();
         assertEquals(playerName, winner);
     }
+
+    @Then("the game {string} be in advantage")
+    public void the_game_should_be_in_advantage(String status) {
+        if (status.equals("should")) {
+            assertTrue(game.isDeuce());
+        } else {
+            assertFalse(game.isDeuce());
+        }
+    }
+
     @Then("{string} should be in advantage")
     public void player_should_be_in_advantage(String playerName) {
         Player player = getPlayerByName(playerName);
@@ -101,4 +118,4 @@ public class GameSteps {
         Player player = getPlayerByName(playerName);
         assertNotEquals("Advantage", player.getScore(game.isEndgame()));
     }
-    }
+}
