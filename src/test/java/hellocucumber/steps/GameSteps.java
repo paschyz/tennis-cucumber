@@ -3,6 +3,7 @@ package hellocucumber.steps;
 import hellocucumber.Game;
 import hellocucumber.Player;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeStep;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -15,7 +16,6 @@ public class GameSteps {
     private Player playerB;
     private Game game;
     private String currentScore;
-
 
 
     private Player getPlayerByName(String playerName) {
@@ -40,9 +40,8 @@ public class GameSteps {
 
     @When("I check for deuce and advantage")
     public void checkDeuceAndAdvantage() {
-        if(!game.isDeuce()){
-            game.checkDeuce();
-        }
+        game.checkDeuce();
+        game.checkResetAdvantage();
         game.checkAdvantage();
     }
 
@@ -57,16 +56,7 @@ public class GameSteps {
 
     @When("{string} scores a point")
     public void player_scores_a_point(String playerName) {
-        switch (playerName) {
-            case ("Player A"):
-                playerA.winPoint();
-                break;
-            case ("Player B"):
-                playerB.winPoint();
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown player name: " + playerName);
-        }
+        getPlayerByName(playerName).winPoint();
     }
     @Then("the score should be {string}")
     public void the_score_should_be(String expectedScore) {
@@ -77,17 +67,22 @@ public class GameSteps {
 
     @Then("the game should be in deuce")
     public void the_game_should_be_in_deuce() {
-        assertEquals(true, game.isDeuce());
+        assertTrue(game.isDeuce());
     }
 
     @Then("the game should not be in deuce")
     public void the_game_should_not_be_in_deuce() {
-        assertEquals(false, game.isDeuce());
+        assertFalse(game.isDeuce());
     }
 
     @Then("the game should be in endgame")
     public void the_game_should_be_in_endgame() {
-        assertEquals(true, game.isEndgame());
+        assertTrue(game.isEndgame());
+    }
+
+    @Then("the game should not be in endgame")
+    public void the_game_should_not_be_in_endgame() {
+        assertFalse(game.isEndgame());
     }
 
     @Then("{string} should win the game")
@@ -97,36 +92,13 @@ public class GameSteps {
     }
     @Then("{string} should be in advantage")
     public void player_should_be_in_advantage(String playerName) {
-        Player player;
-        switch (playerName) {
-            case ("Player A"):
-                player = playerA;
-                break;
-            case ("Player B"):
-                player = playerB;
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown player name: " + playerName);
-        }
+        Player player = getPlayerByName(playerName);
         assertEquals("Advantage", player.getScore(game.isEndgame()));
     }
 
     @Then("{string} should not be in advantage")
     public void player_should_not_be_in_advantage(String playerName) {
-        Player player;
-        switch (playerName) {
-            case ("Player A"):
-                player = playerA;
-                break;
-            case ("Player B"):
-                player = playerB;
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown player name: " + playerName);
-        }
+        Player player = getPlayerByName(playerName);
         assertNotEquals("Advantage", player.getScore(game.isEndgame()));
     }
-
-
-
     }

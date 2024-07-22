@@ -1,6 +1,7 @@
 package hellocucumber;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
     private final Player playerOne;
@@ -10,7 +11,7 @@ public class Game {
     private boolean isAdvantage = false;
     private boolean isEndgame = false;
 
-    public Game(Player playerOne, Player playerTwo){
+    public Game(Player playerOne, Player playerTwo) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
     }
@@ -27,71 +28,110 @@ public class Game {
         return isEndgame;
     }
 
-    public void randomPlayerWinsPoint(){
+    public void randomPlayerWinsPoint() {
         givePoint(selectRandomWinner());
     }
 
-    public Integer selectRandomWinner(){
+    public Integer selectRandomWinner() {
         Random random = new Random();
         return random.nextInt(2);
     }
 
-    public void givePoint(Integer playerIndex){
-        switch (playerIndex){
-            case(0):
+    public void givePoint(Integer playerIndex) {
+        switch (playerIndex) {
+            case 0:
                 playerOne.winPoint();
                 break;
-            case(1):
+            case 1:
                 playerTwo.winPoint();
                 break;
-            default:throw new IllegalArgumentException("Invalid Index: " + playerIndex);
+            default:
+                throw new IllegalArgumentException("Invalid Index: " + playerIndex);
         }
     }
 
-    public void displayScores(Integer roundNumber){
-        System.out.println("-------------ROUND "+ roundNumber+ "--------------");
+    public void displayScores(Integer roundNumber) {
+        System.out.println("-------------ROUND " + roundNumber + "--------------");
         System.out.println(getScore());
         System.out.println("");
-
     }
 
-    public void displayDeuceAndAdvantage(){
+    public void displayDeuceAndAdvantage() {
         System.out.println("deuce : " + isDeuce);
         System.out.println("advantage : " + isAdvantage);
         System.out.println("endgame : " + isEndgame);
     }
 
     public String checkWinner() {
-        if (playerOne.getScoreIndex() >= 4 && playerOne.getScoreIndex() >= playerTwo.getScoreIndex() + 2) {
+        int scoreOne = convertScoreToNumeric(playerOne.getScore(isEndgame));
+        int scoreTwo = convertScoreToNumeric(playerTwo.getScore(isEndgame));
+
+        // Check if Player One is the winner
+        if (scoreOne >= 4 && scoreOne >= scoreTwo + 2) {
             return playerOne.getName();
-        } else if (playerTwo.getScoreIndex() >= 4 && playerTwo.getScoreIndex() >= playerOne.getScoreIndex() + 2) {
+        }
+        // Check if Player Two is the winner
+        else if (scoreTwo >= 4 && scoreTwo >= scoreOne + 2) {
             return playerTwo.getName();
         }
+        // No winner yet
         return null;
     }
 
-    public void checkDeuce(){
-        if (playerOne.getScoreIndex() == 3 && playerTwo.getScoreIndex() == 3){
+    public void checkDeuce() {
+        // Check if both players are at deuce (both at 40)
+        if (playerTwo.getScore(isEndgame).equals("40") && playerOne.getScore(isEndgame).equals("40")) { // 3 represents "40"
             isDeuce = true;
             isEndgame = true;
+        } else {
+            isDeuce = false;
         }
     }
 
-    public void checkAdvantage(){
-        if (playerOne.getScoreIndex() >= playerTwo.getScoreIndex() + 1 || playerTwo.getScoreIndex() >= playerOne.getScoreIndex() + 1){
+    public void checkAdvantage() {
+        int scoreOne = convertScoreToNumeric(playerOne.getScore(isEndgame));
+        int scoreTwo = convertScoreToNumeric(playerTwo.getScore(isEndgame));
+
+        // Check if either player has an advantage
+        if (scoreOne >= 4 && scoreOne >= scoreTwo + 1) {
             isAdvantage = true;
-            isEndgame = true;
+        } else if (scoreTwo >= 4 && scoreTwo >= scoreOne + 1) {
+            isAdvantage = true;
+        } else {
+            isAdvantage = false;
         }
-        checkResetAdvantage();
     }
 
-    public void checkResetAdvantage(){
-        if (playerOne.getScoreIndex() == playerTwo.getScoreIndex()){
+    public void checkResetAdvantage() {
+        int scoreOne = convertScoreToNumeric(playerOne.getScore(isEndgame));
+        int scoreTwo = convertScoreToNumeric(playerTwo.getScore(isEndgame));
+
+        // Reset advantage if scores are equal and advantage was active
+        if (scoreOne == scoreTwo && isAdvantage) {
             resetPoints();
         }
     }
 
-    public void resetPoints(){
+    private int convertScoreToNumeric(String score) {
+        switch (score) {
+            case "love":
+                return 0;
+            case "15":
+                return 1;
+            case "30":
+                return 2;
+            case "40":
+                return 3;
+            case "Advantage":
+                return 4; // Representing advantage as 4
+            case "Win !":
+                return 5; // Representing win as 5
+            default:
+                throw new IllegalArgumentException("Invalid score: " + score);
+        }
+    }
+
+    public void resetPoints() {
         playerOne.setScoreIndex(3);
         playerTwo.setScoreIndex(3);
         isAdvantage = false;
@@ -99,18 +139,50 @@ public class Game {
     }
 
     public String getScore() {
-        return playerOne.getScore(isEndgame()) + " - " + playerTwo.getScore(isEndgame());
+        return playerOne.getScore(isEndgame) + " - " + playerTwo.getScore(isEndgame);
     }
 
-    public void play(){
+    public void playAutomatic() {
         Integer roundCount = 1;
-        while(true){
+        while (true) {
             randomPlayerWinsPoint();
             checkDeuce();
+            checkResetAdvantage();
             checkAdvantage();
             String winnerName = checkWinner();
             displayScores(roundCount);
-            if(winnerName != null){
+            if (winnerName != null) {
+                System.out.println("\n" + winnerName + " wins !");
+                return;
+            }
+            roundCount++;
+        }
+    }
+
+    public void playManual() {
+        Scanner scanner = new Scanner(System.in);
+        Integer roundCount = 1;
+        while (true) {
+            System.out.println("Enter the name of the player who won the point (or 'exit' to end):");
+            String winner = scanner.nextLine();
+            if (winner.equalsIgnoreCase("exit")) {
+                System.out.println("Game ended by user.");
+                return;
+            }
+            if (winner.equals(playerOne.getName())) {
+                givePoint(0);
+            } else if (winner.equals(playerTwo.getName())) {
+                givePoint(1);
+            } else {
+                System.out.println("Invalid player name. Please try again.");
+                continue;
+            }
+            checkDeuce();
+            checkResetAdvantage();
+            checkAdvantage();
+            String winnerName = checkWinner();
+            displayScores(roundCount);
+            if (winnerName != null) {
                 System.out.println("\n" + winnerName + " wins !");
                 return;
             }
