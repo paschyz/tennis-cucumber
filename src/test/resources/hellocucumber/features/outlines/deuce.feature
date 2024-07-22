@@ -21,7 +21,7 @@ Feature: Deuce
     Then the game <Deuce_Status> be in deuce
 
     Examples:
-      | PlayerA_Points | PlayerB_Points | Score          | Deuce_Status |
+        | PlayerA_Points | PlayerB_Points | Score          | Deuce_Status |
       | 0              | 0              | 15 - love      | should not   |
       | 1              | 0              | 30 - love      | should not   |
       | 2              | 0              | 40 - love      | should not   |
@@ -38,3 +38,4 @@ Feature: Deuce
       | 1              | 3              | 30 - 40        | should not   |
       | 2              | 3              | 40 - 40        | should       |
       | 3              | 3              | Advantage - 40 | should not   |
+

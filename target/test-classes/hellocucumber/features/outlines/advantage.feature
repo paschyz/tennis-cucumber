@@ -25,3 +25,4 @@ Feature: Advantage
       | 2              | 2              | 40 - 30        | should not   |
       | 0              | 3              | 15 - 40        | should not   |
       | 1              | 3              | 30 - 40        | should not   |
+      | 3              | 3              | Advantage - 40 | should       |

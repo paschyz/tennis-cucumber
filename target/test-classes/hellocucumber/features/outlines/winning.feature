@@ -16,3 +16,16 @@ Feature: Tennis Game Winning
     Given Player A has won 4 point(s) and Player B has won 0 point(s)
     When I check for deuce and advantage
     Then "Player A" should win the game
+
+  Scenario: Player A wins a point while Player B has advantage
+    Given Player A has won 3 point(s) and Player B has won 3 point(s)
+    And I check for deuce and advantage
+    And "Player B" scores a point
+    And I check for deuce and advantage
+    And "Player A" scores a point
+    And I check for deuce and advantage
+    And "Player A" scores a point
+    And I check for deuce and advantage
+    And "Player A" scores a point
+    And I check for deuce and advantage
+    Then the score should be "Win ! - 40"
