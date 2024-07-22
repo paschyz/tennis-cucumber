@@ -10,7 +10,7 @@ Feature: Advantage
     When I check for deuce and advantage
     And "Player A" scores a point
     And I check for deuce and advantage
-    Then the game <Advantage_Status> be in advantage
+    Then the game <Advantage_Status> be in deuce
 
     Examples:
       | PlayerA_Points | PlayerB_Points | Score          | Advantage_Status |
